@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+<p>Графики</p>
+<img th:src="@{/Charts.png}"/>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>X</th>
+        <th>Y</th>
+        <th>Target</th>
+        <th>Deviation</th>
+        <th>Measure of deviation</th>
+        <th>Standard deviation</th>
+        <th>Coefficients</th>
+        <th>Coefficient of Pirson</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="result : ${results}">
+        <td th:text="${result.name}"></td>
+        <td>
+            <ul>
+                <li th:each="coord : ${result.coords}">
+                    <span th:text="${coord.x}"></span>
+                </li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <li th:each="coord : ${result.coords}">
+                    <span th:text="${coord.y}"></span>
+                </li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <li th:each="target : ${result.targets}">
+                    <span th:text="${target}"></span>
+                </li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <li th:each="deviation : ${result.deviations}">
+                    <span th:text="${deviation}"></span>
+                </li>
+            </ul>
+        </td>
+        <td th:text="${result.measureOfDeviation}"></td>
+        <td th:text="${result.standardDeviation}"></td>
+        <td>
+            <ul>
+                <li th:each="coef : ${result.coefficients}">
+                    <span th:text="${coef}"></span>
+                </li>
+            </ul>
+        </td>
+        <td th:text="${result.coefPirson}"></td>
+    </tr>
+    </tbody>
+
+</table>
+<p>Самый лучший результат апроксимации показала функция:</p>
+<p th:text="${bestResult.name}"></p>
+<p>Ee СКО:</p>
+<p th:text="${bestResult.standardDeviation}"></p>
+</body>
+</html>

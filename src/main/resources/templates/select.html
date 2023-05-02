@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Select Rows</title>
+</head>
+<body>
+<h1>Select number of rows</h1>
+<form action="#" th:action="@{/coordinates}" method="get">
+  <label for="rowCount">Rows: </label>
+  <select id="rowCount" name="rowCount">
+    <option th:each="row : ${#numbers.sequence(8, 12)}" th:value="${row}" th:text="${row}"></option>
+  </select>
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>

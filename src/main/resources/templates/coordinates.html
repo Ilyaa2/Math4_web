@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Coordinates Form</title>
+</head>
+<body>
+<h1>Enter Coordinates</h1>
+<form action="#" th:action="@{/coordinates}" th:object="${coordinatesWrapper}" method="post">
+    <table>
+        <tr>
+            <th>X</th>
+            <th>Y</th>
+        </tr>
+        <tr th:each="coordinates, iterStat : *{coordinatesList}">
+            <td><input type="number" step="0.01" min="-50" max="50" th:field="*{coordinatesList[__${iterStat.index}__].x}" /></td>
+            <td><input type="number" step="0.01" min="-50" max="50" th:field="*{coordinatesList[__${iterStat.index}__].y}" /></td>
+        </tr>
+    </table>
+    <button type="submit">Submit</button>
+</form>
+<script type="text/javascript" src="/js/script.js"></script>
+</body>
+</html>
