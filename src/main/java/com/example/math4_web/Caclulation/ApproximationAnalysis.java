@@ -46,7 +46,7 @@ public class ApproximationAnalysis {
                 result.getDeviations().add(method.getFunction().apply(c.getX()) - c.getY());
             }
             result.calculateDeviations(listOfCoordinates.size());
-            results.add(result);
+            if (!Double.isNaN(result.getStandardDeviation())) results.add(result);
         }
     }
 
